@@ -28,7 +28,13 @@ public class EmployeeController {
 	        return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 	    }      
 	}
-     
+    
+	
+	/*http://localhost:8080/employee?name:xyz?department:sales*/
+	@PostMapping("/employee")
+	public void add(@RequestBody Employee employee) {
+	    service.save(employee);
+	}
     
 
 }
