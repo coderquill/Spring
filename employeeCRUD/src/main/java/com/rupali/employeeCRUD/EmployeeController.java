@@ -13,10 +13,20 @@ public class EmployeeController {
 	@Autowired
     private EmployeeService service;
      
-    // RESTful API methods for Retrieval operations
+    
 	@GetMapping("/employee")
 	public List<Employee> list() {
 		return service.listAll();
+	}
+	
+	@GetMapping("/employee/{id}")
+	public ResponseEntity<Employee> get(@PathVariable Integer id) {
+	    try {
+	    	Employee employee = service.get(id);
+	        return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+	    } catch (NoSuchElementException e) {
+	        return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
+	    }      
 	}
      
     
