@@ -30,10 +30,24 @@ public class EmployeeController {
 	}
     
 	
-	/*http://localhost:8080/employee?name:xyz?department:sales*/
+	
+	/* curl -X POST -H "Content-Type: application/json" -d "{\"name\":\"xyz\",\"department\":\"sales\"}" http://localhost:8080/employee
+  */
 	@PostMapping("/employee")
 	public void add(@RequestBody Employee employee) {
 	    service.save(employee);
+	}
+	/* curl -X PUT -H "Content-Type: application/json" -d "{\"id\":3,\"name\":\"lmn\",\"department\":\"hr\"}" http://localhost:8080/employee/3
+ */
+	@PutMapping("/employee/{id}")
+	public ResponseEntity<?> update(@RequestBody Employee employee, @PathVariable Integer id) {
+	    try {
+	    	Employee existEmployee = service.get(id);
+	        service.save(employee);
+	        return new ResponseEntity<>(HttpStatus.OK);
+	    } catch (NoSuchElementException e) {
+	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }      
 	}
     
 
