@@ -13,6 +13,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+
+import com.rupali.service.RabbitMQListner;
+
 @Configuration
 public class RabbitMQConfig {
 
@@ -52,4 +58,15 @@ public class RabbitMQConfig {
 		rabbitTemplate.setMessageConverter(jsonMessageConverter());
 		return rabbitTemplate;
 	}
+	
+	@Bean
+	MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory ) {
+		SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
+		simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
+		simpleMessageListenerContainer.setQueues(queue());
+		simpleMessageListenerContainer.setMessageListener(new RabbitMQListner());
+		return simpleMessageListenerContainer;
+
+	}
+	
 }
