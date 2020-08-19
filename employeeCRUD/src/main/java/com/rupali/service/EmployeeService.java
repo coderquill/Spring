@@ -1,4 +1,4 @@
-package com.rupali.employeeCRUD;
+package com.rupali.service;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import javax.transaction.Transactional;
  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.rupali.model.Employee;
+import com.rupali.repo.EmployeeRepository;
  
 @Service
 @Transactional

@@ -1,11 +1,11 @@
-package com.rupali.employeeCRUD;
+package com.rupali.service;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.rupali.employeeCRUD.Employee;
+import com.rupali.model.Employee;
 
 @Service
 public class RabbitMQSender {

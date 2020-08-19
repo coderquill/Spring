@@ -1,4 +1,4 @@
-package com.rupali.employeeCRUD;
+package com.rupali.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

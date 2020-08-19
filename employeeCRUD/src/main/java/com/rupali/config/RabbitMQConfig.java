@@ -1,4 +1,4 @@
-package com.rupali.employeeCRUD;
+package com.rupali.config;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;
