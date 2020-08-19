@@ -20,6 +20,9 @@ public class EmployeeController {
 	
 	@Autowired
 	RabbitMQSender rabbitMQSender;
+	
+	@Autowired
+	RabbitMQConsumer rabbitMQConsumer;
      
     
 	@GetMapping("/employee")
@@ -49,7 +52,10 @@ public class EmployeeController {
 	public ResponseEntity<?> update(@RequestBody Employee employee, @PathVariable Integer id) {
 	    try {
 	        //service.save(employee);
+	    	Employee existEmployee = service.get(id);
 	        rabbitMQSender.send(employee);
+	        //rabbitMQConsumer.recievedMessage(employee);
+	        rabbitMQConsumer.saveEmployee(employee);
 	        return new ResponseEntity<>(HttpStatus.OK);
 	    } catch (NoSuchElementException e) {
 	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
