@@ -1,10 +1,10 @@
-package com.rupali.demoProduct;
+package com.rupali.rupali;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoProductApplicationTests {
+class SpringRabbitmqSendHelloWorldApplicationTests {
 
 	@Test
 	void contextLoads() {

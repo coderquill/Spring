@@ -7,11 +7,19 @@ import org.springframework.http.*;
  
 import org.springframework.web.bind.annotation.*;
 
+
+import com.rupali.employeeCRUD.Employee;
+import com.rupali.employeeCRUD.RabbitMQSender;
+
+
 @RestController
 public class EmployeeController {
 	
 	@Autowired
     private EmployeeService service;
+	
+	@Autowired
+	RabbitMQSender rabbitMQSender;
      
     
 	@GetMapping("/employee")
@@ -28,8 +36,6 @@ public class EmployeeController {
 	        return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 	    }      
 	}
-    
-	
 	
 	/* curl -X POST -H "Content-Type: application/json" -d "{\"name\":\"xyz\",\"department\":\"sales\"}" http://localhost:8080/employee
   */
@@ -42,7 +48,8 @@ public class EmployeeController {
 	@PutMapping("/employee/{id}")
 	public ResponseEntity<?> update(@RequestBody Employee employee, @PathVariable Integer id) {
 	    try {
-	        service.save(employee);
+	        //service.save(employee);
+	        rabbitMQSender.send(employee);
 	        return new ResponseEntity<>(HttpStatus.OK);
 	    } catch (NoSuchElementException e) {
 	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
