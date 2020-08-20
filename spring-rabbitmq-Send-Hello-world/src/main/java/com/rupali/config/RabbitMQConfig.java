@@ -17,7 +17,7 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 
-import com.rupali.service.RabbitMQListner;
+//import com.rupali.service.RabbitMQListner;
 
 @Configuration
 public class RabbitMQConfig {
@@ -59,7 +59,7 @@ public class RabbitMQConfig {
 		return rabbitTemplate;
 	}
 	
-	@Bean
+	/*@Bean
 	MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory ) {
 		SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
 		simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
@@ -67,6 +67,6 @@ public class RabbitMQConfig {
 		simpleMessageListenerContainer.setMessageListener(new RabbitMQListner());
 		return simpleMessageListenerContainer;
 
-	}
+	}*/
 	
 }

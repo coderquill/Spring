@@ -1,4 +1,4 @@
-/*package com.rupali.service;
+package com.rupali.service;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
@@ -11,4 +11,4 @@ public class RabbitMQListner implements MessageListener {
 		System.out.println("Consuming Message - " + new String(message.getBody()));
 	}
 
-}*/
+}
