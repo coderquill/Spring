@@ -53,8 +53,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     		EmployeeToUpdate.setDepartment(EmployeeToUpdateFrom.getDepartment());
     	}
     	
-    	employeeRepository.save(EmployeeToUpdate);
+    	System.out.println("Updated employee id :"+EmployeeToUpdate.getId()
+    						+" Updated name:"+EmployeeToUpdate.getName()
+    						+" Updated gender:"+EmployeeToUpdate.getGender()
+    						+" Updated department:"+EmployeeToUpdate.getDepartment());
     	
+    	employeeRepository.save(EmployeeToUpdate);	
     }
     
     
