@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import org.rupali.employee.crud.dao.EmployeeRepository;
 import org.rupali.employee.crud.entity.Employee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +16,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
     private EmployeeRepository employeeRepository;
 
+	Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class); 
+	
     @Override
     public List<Employee> findAllEmployees() {
+    	logger.trace("accessed findAllEmployees method");
         return employeeRepository.findAll();
     }
 
@@ -26,6 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = null;
         if(result.isPresent()){
             employee = result.get();
+            logger.trace("accessed findEmployeeById method");
         }
         else {
             throw new RuntimeException("Did not find employee id: " + id);
@@ -37,6 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void saveEmployee(Employee employee) {
         employeeRepository.save(employee);
+        logger.trace("accessed saveEmployee method. saved employee "+employee);
     }
     
     @Override
@@ -53,17 +60,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     		EmployeeToUpdate.setDepartment(EmployeeToUpdateFrom.getDepartment());
     	}
     	
-    	System.out.println("Updated employee id :"+EmployeeToUpdate.getId()
-    						+" Updated name:"+EmployeeToUpdate.getName()
-    						+" Updated gender:"+EmployeeToUpdate.getGender()
-    						+" Updated department:"+EmployeeToUpdate.getDepartment());
-    	
     	employeeRepository.save(EmployeeToUpdate);	
+    	
+    	logger.trace("Updated employee id :"+EmployeeToUpdate.getId()
+		+" Updated name:"+EmployeeToUpdate.getName()
+		+" Updated gender:"+EmployeeToUpdate.getGender()
+		+" Updated department:"+EmployeeToUpdate.getDepartment());
+    	
     }
     
     
     @Override
     public void deleteEmployeeById(UUID id) {
+    	
         employeeRepository.deleteById(id);
+        logger.trace("accessed deleteEmployee method. Deleted employee with id: "+id);
     }
 }
