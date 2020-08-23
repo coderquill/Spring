@@ -1,4 +1,4 @@
-package com.rupali.config;
+package org.rupali.employeeCrudApplication.config;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;
@@ -12,9 +12,6 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-
-//import com.rupali.service.RabbitMQListner;
 
 @Configuration
 public class RabbitMQConfig {
@@ -56,14 +53,5 @@ public class RabbitMQConfig {
 		return rabbitTemplate;
 	}
 	
-	/*@Bean
-	MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory ) {
-		SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
-		simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
-		simpleMessageListenerContainer.setQueues(queue());
-		simpleMessageListenerContainer.setMessageListener(new RabbitMQListner());
-		return simpleMessageListenerContainer;
-
-	}*/
 	
 }

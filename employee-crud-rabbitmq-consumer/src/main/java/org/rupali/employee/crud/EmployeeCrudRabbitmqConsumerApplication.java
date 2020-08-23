@@ -1,7 +1,4 @@
-package com.rupali;
-
-//import org.springframework.boot.SpringApplication;
-//import org.springframework.boot.autoconfigure.SpringBootApplication;
+package org.rupali.employee.crud;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
@@ -12,13 +9,13 @@ import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
 
 
+
 @SpringBootApplication
-public class SpringRabbitmqConsumerApplication implements RabbitListenerConfigurer{
+public class EmployeeCrudRabbitmqConsumerApplication implements RabbitListenerConfigurer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringRabbitmqConsumerApplication.class, args);
+		SpringApplication.run(EmployeeCrudRabbitmqConsumerApplication.class, args);
 	}
-	
 	@Bean
     public MappingJackson2MessageConverter jackson2Converter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
@@ -37,4 +34,6 @@ public class SpringRabbitmqConsumerApplication implements RabbitListenerConfigur
         registrar.setMessageHandlerMethodFactory(myHandlerMethodFactory());
     }
 
+
+	
 }

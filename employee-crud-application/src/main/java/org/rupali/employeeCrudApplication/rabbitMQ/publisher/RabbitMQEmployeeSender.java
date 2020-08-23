@@ -1,14 +1,14 @@
-package com.rupali.service;
+package org.rupali.employeeCrudApplication.rabbitMQ.publisher;
 
+import org.rupali.employeeCrudApplication.dto.EmployeeDto;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.rupali.model.Employee;
-
 @Service
-public class RabbitMQSender {
+public class RabbitMQEmployeeSender {
+ 
 	
 	@Autowired
 	private AmqpTemplate rabbitTemp;
@@ -19,9 +19,8 @@ public class RabbitMQSender {
 	@Value("${rupali.rabbitmq.routingkey}")
 	private String routingkey;	
 	
-	public void send(Employee employee) {
-		rabbitTemp.convertAndSend(exchange, routingkey, employee);
-		System.out.println("Send msg = " + employee);
-	    
+	public void sendEmployeeUpdateRequest(EmployeeDto  employeeDto) {
+		rabbitTemp.convertAndSend(exchange, routingkey, employeeDto);
+		System.out.println("Sent msg to the queue = " + employeeDto);   
 	}
 }
