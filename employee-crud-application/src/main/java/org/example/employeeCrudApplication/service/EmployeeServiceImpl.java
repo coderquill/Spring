@@ -113,28 +113,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     	
     }
     
-    /*@Override
-    public void updateEmployee(Employee EmployeeToUpdateFrom, Employee EmployeeToUpdate) {
-    	
-    	
-    	
-    	if(EmployeeToUpdateFrom.getName() != null ) {
-    		EmployeeToUpdate.setName(EmployeeToUpdateFrom.getName());
-    	}
-    	
-    	if(EmployeeToUpdateFrom.getGender() != null ) {
-    		EmployeeToUpdate.setGender(EmployeeToUpdateFrom.getGender());
-    	}
-    	
-    	if(EmployeeToUpdateFrom.getDepartment() != null ) {
-    		EmployeeToUpdate.setDepartment(EmployeeToUpdateFrom.getDepartment());
-    	}
-    	
-    	employeeRepository.save(EmployeeToUpdate);
-    	
-    }*/
-    
-    
     @Override
     public void deleteEmployeeById(UUID id) {
     	

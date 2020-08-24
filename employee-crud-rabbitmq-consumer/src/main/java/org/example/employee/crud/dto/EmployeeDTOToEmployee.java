@@ -1,14 +1,14 @@
-package org.example.employeeCrudApplication.dto;
+package org.example.employee.crud.dto;
 
-import org.example.employeeCrudApplication.entity.Employee;
-import org.example.employeeCrudApplication.service.EmployeeService;
+import org.example.employee.crud.dto.EmployeeDto;
+import org.example.employee.crud.entity.Employee;
+import org.example.employee.crud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeDTOToEmployee {
-
-    private EmployeeService employeeService;
+	private EmployeeService employeeService;
 
     @Autowired
     public void setEmployeeService(EmployeeService employeeService) {

@@ -1,4 +1,4 @@
-package org.example.employeeCrudApplication.entity;
+package org.example.employee.crud.entity;
 
 import javax.persistence.*;
 
@@ -8,7 +8,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "employee_uuid")
 public class Employee {
-
 	@Column
 	@Id
 	private UUID id = UUID.randomUUID();
@@ -57,5 +56,4 @@ public class Employee {
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", department=" + department + "]";
 	}
-		
 }

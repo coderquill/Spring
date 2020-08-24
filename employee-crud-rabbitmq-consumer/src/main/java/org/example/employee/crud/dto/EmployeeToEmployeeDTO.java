@@ -1,12 +1,12 @@
-package org.example.employeeCrudApplication.dto;
+package org.example.employee.crud.dto;
 
-import org.example.employeeCrudApplication.entity.Employee;
+import org.example.employee.crud.dto.EmployeeDto;
+import org.example.employee.crud.entity.Employee;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeToEmployeeDTO {
-
-    public EmployeeDto convert(Employee employee) {
+	public EmployeeDto convert(Employee employee) {
 
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setId(employee.getId());
