@@ -46,7 +46,7 @@ public class EmployeeRestController {
     
     @GetMapping("/employees")
     public ResponseEntity<List<EmployeeDto>> findAll() {
-    	return new ResponseEntity<>(employeeService.findAllEmployees(), HttpStatus.OK);
+    	return new ResponseEntity<>(employeeService.findAllEmployeeDtos(), HttpStatus.OK);
         
     }
 
@@ -60,7 +60,7 @@ public class EmployeeRestController {
         }
         logger.trace("getEmployee method accessed. Returning employee with id: "+id);
         return new ResponseEntity<>(employeeToEmployeeDTO.convert(employee), HttpStatus.OK);*/
-    	return new ResponseEntity<>(employeeService.findEmployeeById(id), HttpStatus.OK);
+    	return new ResponseEntity<>(employeeService.findEmployeeDtoById(id), HttpStatus.OK);
     }
 
   //curl -X POST -H "Content-Type: application/json" -d "{\"name\":\"rbk\",\"gender\":\"female\",\"department\":\"Development\"}" http://localhost:8080/api/employee

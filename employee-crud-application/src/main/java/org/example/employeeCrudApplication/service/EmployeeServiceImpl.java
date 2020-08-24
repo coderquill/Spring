@@ -43,7 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Override
-    public List<EmployeeDto> findAllEmployees() {
+    public List<EmployeeDto> findAllEmployeeDtos() {
     	List<EmployeeDto> employeeDtos = new ArrayList<>();
 
         for(Employee employee : employeeRepository.findAll()) {
@@ -53,12 +53,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         
         return employeeDtos;
     }
-   /* public List<Employee> findAllEmployees() {
+    
+    @Override
+    public List<Employee> findAllEmployees() {
         return employeeRepository.findAll();
     }
-	*/
+	
     @Override
-    public EmployeeDto findEmployeeById(UUID id) {
+    public EmployeeDto findEmployeeDtoById(UUID id) {
         
         Optional<Employee> result = employeeRepository.findById(id);
 
@@ -72,7 +74,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         
         return employeeToEmployeeDTO.convert(employee);
-       /* Optional<Employee> result = employeeRepository.findById(id);
+      
+    }
+    
+    @Override
+    public Employee findEmployeeById(UUID id) {
+        
+       Optional<Employee> result = employeeRepository.findById(id);
 
         Employee employee = null;
         if(result.isPresent()){
@@ -82,8 +90,9 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new RuntimeException("Did not find employee id: " + id);
         }
 
-        return employee;*/
+        return employee;
     }
+
 
     @Override
     public void saveEmployee(Employee employee) {

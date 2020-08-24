@@ -7,10 +7,13 @@ import org.example.employeeCrudApplication.entity.Employee;
 
 public interface EmployeeService {
 
-   // List<Employee> findAllEmployees();
-	List<EmployeeDto> findAllEmployees();
+    List<Employee> findAllEmployees();
+    
+	List<EmployeeDto> findAllEmployeeDtos();
+	
+	Employee findEmployeeById(UUID id);
 
-	 EmployeeDto findEmployeeById(UUID id);
+	EmployeeDto findEmployeeDtoById(UUID id);
 
     void saveEmployee(Employee employee);
     
