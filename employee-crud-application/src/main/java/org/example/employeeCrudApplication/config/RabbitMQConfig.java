@@ -1,4 +1,4 @@
-package org.rupali.employeeCrudApplication.config;
+package org.example.employeeCrudApplication.config;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;
@@ -16,13 +16,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-	@Value("${rupali.rabbitmq.queue}")
+	@Value("${employee.rabbitmq.queue}")
 	String queueName;
 
-	@Value("${rupali.rabbitmq.exchange}")
+	@Value("${employee.rabbitmq.exchange}")
 	String exchange;
 
-	@Value("${rupali.rabbitmq.routingkey}")
+	@Value("${employee.rabbitmq.routingkey}")
 	private String routingkey;
 
 	@Bean

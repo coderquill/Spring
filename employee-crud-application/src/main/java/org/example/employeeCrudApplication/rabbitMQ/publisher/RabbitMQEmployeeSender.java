@@ -1,7 +1,7 @@
-package org.rupali.employeeCrudApplication.rabbitMQ.publisher;
+package org.example.employeeCrudApplication.rabbitMQ.publisher;
 
-import org.rupali.employeeCrudApplication.controller.rest.EmployeeRestController;
-import org.rupali.employeeCrudApplication.dto.EmployeeDto;
+import org.example.employeeCrudApplication.controller.rest.EmployeeRestController;
+import org.example.employeeCrudApplication.dto.EmployeeDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -17,10 +17,10 @@ public class RabbitMQEmployeeSender {
 	@Autowired
 	private AmqpTemplate rabbitTemp;
 	
-	@Value("${rupali.rabbitmq.exchange}")
+	@Value("${employee.rabbitmq.exchange}")
 	private String exchange;
 	
-	@Value("${rupali.rabbitmq.routingkey}")
+	@Value("${employee.rabbitmq.routingkey}")
 	private String routingkey;	
 	
 	public void sendEmployeeUpdateRequest(EmployeeDto  employeeDto) {

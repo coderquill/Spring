@@ -1,6 +1,6 @@
-package org.rupali.employeeCrudApplication.dto;
+package org.example.employeeCrudApplication.dto;
 
-import org.rupali.employeeCrudApplication.entity.Employee;
+import org.example.employeeCrudApplication.entity.Employee;
 import org.springframework.stereotype.Component;
 
 @Component

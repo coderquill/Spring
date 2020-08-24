@@ -1,4 +1,4 @@
-package org.rupali.employeeCrudApplication.dto;
+package org.example.employeeCrudApplication.dto;
 
 import java.util.UUID;
 

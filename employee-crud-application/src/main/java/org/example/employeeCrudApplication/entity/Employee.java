@@ -1,4 +1,4 @@
-package org.rupali.employeeCrudApplication.entity;
+package org.example.employeeCrudApplication.entity;
 
 import javax.persistence.*;
 
