@@ -15,9 +15,9 @@ public interface EmployeeService {
 
 	EmployeeDto findEmployeeDtoById(UUID id);
 
-    void saveEmployee(Employee employee);
+    void saveEmployee(EmployeeDto employeeDto);
     
-    void updateEmployee(Employee  EmployeeToUpdateFrom, Employee EmployeeToUpdate);
+    void updateEmployee(EmployeeDto  employeeDto, UUID id);
 
     void deleteEmployeeById(UUID id);
 }

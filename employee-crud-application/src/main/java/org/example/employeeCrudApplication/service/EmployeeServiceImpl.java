@@ -10,9 +10,7 @@ import org.example.employeeCrudApplication.rabbitMQ.publisher.RabbitMQEmployeeSe
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -95,11 +93,27 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
-    public void saveEmployee(Employee employee) {
-        employeeRepository.save(employee);
+    public void saveEmployee(EmployeeDto employeeDto) {
+    	
+        employeeRepository.save(employeeDTOToEmployee.convert(employeeDto));
     }
     
+    
     @Override
+    public void updateEmployee(EmployeeDto  employeeDto, UUID id) {
+    		
+    	
+        if (findEmployeeById(id) == null) {
+        	logger.error("No such employee with given id: "+id);
+        }else {
+        	employeeDto.setId(id);
+        	logger.trace("updateEmployee method accessed.");
+        	rabbitMQSender.sendEmployeeUpdateRequest(employeeDto);
+        }
+    	
+    }
+    
+    /*@Override
     public void updateEmployee(Employee EmployeeToUpdateFrom, Employee EmployeeToUpdate) {
     	
     	
@@ -118,11 +132,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     	
     	employeeRepository.save(EmployeeToUpdate);
     	
-    }
+    }*/
     
     
     @Override
     public void deleteEmployeeById(UUID id) {
-        employeeRepository.deleteById(id);
+    	
+        if (findEmployeeById(id) == null) {
+        	logger.error("No such employee with given id: "+id);
+        }else {
+        	 employeeRepository.deleteById(id);
+        	logger.trace("deleteEmployeeById method accessed. Employee with id: "+id +" deleted.");	
+        }	
+       
     }
 }
