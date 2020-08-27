@@ -2,12 +2,13 @@ package org.example.employeeCrudApplication.entity;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.UUID;
 
 @Entity
 @Table(name = "employee_uuid")
-public class Employee {
+public class Employee implements Serializable {
 
 	@Column
 	@Id

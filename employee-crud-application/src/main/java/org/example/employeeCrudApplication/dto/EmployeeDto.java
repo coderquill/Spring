@@ -1,8 +1,9 @@
 package org.example.employeeCrudApplication.dto;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class EmployeeDto {
+public class EmployeeDto implements Serializable{
 
     private UUID id;
 

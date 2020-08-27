@@ -47,7 +47,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         for(Employee employee : employeeRepository.findAll()) {
             employeeDtos.add(employeeToEmployeeDTO.convert(employee));
         }
-        logger.trace("findAll method accessed. Returning all employees");
+        logger.trace("findAll method accessed. Fetched all employees from database");
         
         return employeeDtos;
     }
@@ -65,7 +65,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = null;
         if(result.isPresent()){
             employee = result.get();
-            logger.trace("getEmployee method accessed. Returning employee with id: "+id);
+            logger.trace("getEmployee method accessed. Fetched employee from database with id: "+id);
         }
         else {
             throw new RuntimeException("Did not find employee id: " + id);
