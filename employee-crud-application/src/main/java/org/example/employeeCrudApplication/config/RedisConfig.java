@@ -55,12 +55,20 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
     
     
-    /*8@Bean
+    @Bean
     public CacheManager cacheManager(RedisConnectionFactory  factory) {
         RedisCacheConfiguration config =  RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofSeconds(10));
         RedisCacheManager cacheManager =  RedisCacheManager.builder(factory).cacheDefaults(config).build();
         return cacheManager;
-    }*/
+    }
+    /*
+     <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+     * */
+    
 
 
 

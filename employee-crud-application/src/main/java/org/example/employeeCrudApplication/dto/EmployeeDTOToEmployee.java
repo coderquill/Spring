@@ -1,12 +1,14 @@
 package org.example.employeeCrudApplication.dto;
 
+import java.io.Serializable;
+
 import org.example.employeeCrudApplication.entity.Employee;
 import org.example.employeeCrudApplication.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmployeeDTOToEmployee {
+public class EmployeeDTOToEmployee implements Serializable{
 
     private EmployeeService employeeService;
 

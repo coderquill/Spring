@@ -55,7 +55,7 @@ public class EmployeeRestController {
     }
 
     @DeleteMapping("employee/{id}")
-    @CacheEvict(value = "employees", allEntries=true)
+    @CacheEvict(cacheManager ="cacheManager", value = "employees", allEntries=true)
     public void deleteEmployeeById(@PathVariable UUID id) {
     	employeeService.deleteEmployeeById(id);
     }

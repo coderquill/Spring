@@ -1,10 +1,12 @@
 package org.example.employeeCrudApplication.dto;
 
+import java.io.Serializable;
+
 import org.example.employeeCrudApplication.entity.Employee;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmployeeToEmployeeDTO {
+public class EmployeeToEmployeeDTO implements Serializable{
 
     public EmployeeDto convert(Employee employee) {
 
