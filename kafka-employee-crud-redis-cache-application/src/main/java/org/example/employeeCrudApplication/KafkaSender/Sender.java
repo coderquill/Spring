@@ -13,19 +13,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Sender {
-/*
-    private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
-
-    @Value("${kafka.topic.json}")
-    private String jsonTopic;
-
-    @Autowired
-    private KafkaTemplate<String, EmployeeDto> kafkaTemplate;
-
-    public void send(EmployeeDto employee) {
-        LOGGER.info("sending employee='{}'", employee.toString());
-        kafkaTemplate.send(jsonTopic, employee);
-    }*/
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
 

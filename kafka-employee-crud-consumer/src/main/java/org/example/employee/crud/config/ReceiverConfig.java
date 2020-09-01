@@ -15,7 +15,6 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import org.example.employee.crud.dto.EmployeeDto;
-import org.example.employee.crud.KafkaConsumer.Receiver;
 
 @Configuration
 @EnableKafka
@@ -23,38 +22,6 @@ public class ReceiverConfig {
 
     @Value("${kafka.bootstrap-servers}")
     private String bootstrapServers;
-
-/*
-
-    @Bean
-    public Map<String, Object> consumerConfigs() {
-        Map<String, Object> props = new HashMap<>();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "json");
-
-        return props;
-    }
-
-    @Bean
-    public ConsumerFactory<String, EmployeeDto> consumerFactory() {
-        return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(),
-                new JsonDeserializer<>(EmployeeDto.class));
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, EmployeeDto> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, EmployeeDto> factory =
-                new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
-
-        return factory;
-    }
-    @Bean
-    public Receiver receiver() {
-        return new Receiver();
-    }*/
 
     @Bean
     public ConsumerFactory<String, EmployeeDto> consumerFactory(){

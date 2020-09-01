@@ -49,8 +49,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     
     @Override
     public void updateEmployee(EmployeeDto employeeDto) {
-    	
-    	//Employee EmployeeToUpdateFrom = ;
     	Employee EmployeeToUpdate = findEmployeeById(employeeDto.getId());
     	if(employeeDto.getName() != null ) {
     		EmployeeToUpdate.setName(employeeDto.getName());
@@ -72,8 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		+" Updated department:"+EmployeeToUpdate.getDepartment());
     	
     }
-    
-    
+
     @Override
     public void deleteEmployeeById(UUID id) {
     	
