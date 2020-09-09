@@ -1,0 +1,96 @@
+{
+"settings": {
+"index": {
+"number_of_shards": "3",
+"analysis": {
+"filter": {
+"autocomplete_filter": {
+"type": "edge_ngram",
+"min_gram": 1,
+"max_gram": 20
+},
+"filter_stop": {
+"type": "stop"
+}
+},
+"analyzer": {
+"my_analyzer": {
+"type": "custom",
+"tokenizer": "standard",
+"filter": [
+"lowercase",
+"autocomplete_filter"
+]
+},
+"my_analyzer_1":{
+"filter" : [
+"lowercase",
+"filter_stop"
+],
+"tokenizer" : "my_tokenizer"
+},
+"my_analyzer_2" : {
+"tokenizer" : "my_tokenizer_1"
+}
+
+            },
+            "tokenizer": {
+                "my_tokenizer": {
+                    "token_chars": [
+                    "letter",
+                            "digit"
+                                ],
+                    "min_gram": "2",
+                            "type": "edge_ngram",
+                            "max_gram": "20"
+                },
+                "my_tokenizer_1": {
+                    "type" : "edge_ngram",
+                            "min_gram" : 2,
+                            "max_gram" : 20,
+                            "token_chars" : [
+                    "letter"
+                                ]
+                }
+            }
+        },
+        "number_of_replicas": "2"
+    }
+},
+    "mappings" :
+    {
+        "dynamic": "true",
+        "properties" :
+        {   "FirstName": {
+            "type": "text",
+                    "analyzer" : "my_analyzer",
+                    "search_analyzer" : "my_analyzer_2"
+            },
+            "LastName": {
+            "type": "text",
+                    "analyzer" : "my_analyzer",
+                    "search_analyzer" : "my_analyzer_2"
+            },
+            "Designation" : { "type" : "keyword" },
+            "Salary" : { "type" : "float" },
+            "DateOfJoining" : { "type" : "date", "format": "yyyy-MM-dd" },
+            "Address": {
+                "type":"text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+             },
+            "Gender" : { "type" : "keyword" },
+            "Age" : { "type" : "float" },
+            "MaritalStatus" : { "type" : "keyword" },
+            "Interests": {
+                "type": "text",
+                    "analyzer" : "my_analyzer_1",
+                    "search_analyzer" : "my_analyzer_2"
+            }
+        }
+    }
+}
